@@ -1,8 +1,8 @@
 import "./style.css";
 import "./modern-normalize.css";
 
-const submitBtn = document.querySelector(".submit-btn");
+const form = document.querySelector(".form");
 
-submitBtn.addEventListener("click", (event) => {
+form.addEventListener("submit", (event) => {
   event.preventDefault();
 });
