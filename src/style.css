@@ -3,6 +3,7 @@
   --primary: #7f5af0;
   --secondary: #2cb67d;
   --white: #fffffe;
+  --black: #010101;
 }
 
 body {
@@ -45,6 +46,45 @@ body {
   flex-direction: column;
   gap: 1.5rem;
   align-items: end;
+}
+
+.input-field-container {
+  display: flex;
+  gap: 2rem;
+}
+
+.input-field {
+  padding: 0.1rem;
+  background-color: var(--white);
+  border: 0.15rem solid var(--white);
+  outline: 0.25rem solid var(--white);
+  border-radius: 0.2rem;
+}
+
+.input-field:focus {
+  border: 0.15rem solid var(--black);
+  outline: 0.25rem solid var(--white);
+}
+
+.input-field:valid {
+  border: 0.15rem solid var(--secondary);
+  outline: 0.25rem solid var(--white);
+}
+
+.input-field:invalid:not(:focus) {
+  border: 0.15rem solid var(--primary);
+  outline: 0.25rem solid var(--white);
+}
+
+label {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.input-logo {
+  width: 2rem;
+  height: auto;
 }
 
 .submit-btn {
