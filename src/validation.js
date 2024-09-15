@@ -111,7 +111,7 @@ function showError() {
     passwordError();
     return;
   }
-  if (!confirmPasswordField.validity.valid) {
+  if (!confirmPasswordField.validity.valid || !confirmPasswordValidation) {
     confirmPasswordError();
     return;
   }
