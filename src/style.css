@@ -34,3 +34,8 @@ body {
   width: 4rem;
   height: auto;
 }
+
+.error-msg {
+  height: 1.5rem;
+  color: var(--primary);
+}
