@@ -59,6 +59,11 @@ const currentPasswordLength = function getPasswordLength() {
 };
 
 const passwordError = function showPasswordError() {
+  if (passwordField.validity.valueMissing) {
+    errorMsgElement.textContent =
+      "Please enter a password. Think of the most unique, inarticulable dish you once had.";
+    return;
+  }
   if (passwordField.validity.tooShort) {
     errorMsgElement.textContent = `You need to enter ${
       10 - currentPasswordLength()
@@ -67,7 +72,7 @@ const passwordError = function showPasswordError() {
   }
   if (passwordField.validity.patternMismatch) {
     errorMsgElement.textContent =
-      "Please include at least one lowercase, uppercase, and number (no special characters). Nobody wants their teleportation to get hacked, ideally.";
+      "Please include at least one lowercase, uppercase, and number (no special characters) as password. Nobody wants their teleportation to get hacked, ideally.";
     return;
   }
   errorMsgElement.textContent = "";
@@ -83,7 +88,7 @@ const confirmPasswordValidation = function getConfirmPasswordValidation() {
 const confirmPasswordError = function showConfirmPasswordError() {
   if (!confirmPasswordValidation()) {
     errorMsgElement.textContent =
-      "Please enter the same stuff you entered as your password. Exactly the same - no rounding, no synonyms.";
+      "Please enter the same stuff you entered as your password in confirmation password. Exactly the same - no rounding, no synonyms.";
     return;
   }
   errorMsgElement.textContent = "";
