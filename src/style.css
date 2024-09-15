@@ -89,4 +89,17 @@ label {
 
 .submit-btn {
   align-self: center;
+  appearance: none;
+  padding: 0.5rem 1rem;
+  background-color: var(--background);
+  color: var(--white);
+  border: 0.2rem solid var(--white);
+  border-radius: 0.2rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease-out, transform 0.2s ease-out;
+}
+
+.submit-btn:hover {
+  background-color: var(--secondary);
+  transform: scale(1.1);
 }
