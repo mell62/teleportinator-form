@@ -1,10 +1,18 @@
-export { emailError, countryError, zipError, passwordError, showError };
+export {
+  emailError,
+  countryError,
+  zipError,
+  passwordError,
+  confirmPasswordError,
+  showError,
+};
 
 const errorMsgElement = document.querySelector(".error-msg");
 const emailField = document.querySelector("#email");
 const countryField = document.querySelector("#country");
 const zipField = document.querySelector("#zip");
 const passwordField = document.querySelector("#password");
+const confirmPasswordField = document.querySelector("#confirm-password");
 
 const emailError = function showEmailError() {
   if (emailField.validity.typeMismatch) {
@@ -57,7 +65,24 @@ const passwordError = function showPasswordError() {
   }
 };
 
+const confirmPasswordValidation = function getConfirmPasswordValidation() {
+  if (passwordField.value !== confirmPasswordField.value) {
+    return false;
+  }
+  return true;
+};
+
+const confirmPasswordError = function showConfirmPasswordError() {
+  if (!confirmPasswordValidation()) {
+    errorMsgElement.textContent =
+      "Please enter the same stuff you entered as your password. Exactly the same - no rounding, no synonyms.";
+  } else {
+    errorMsgElement.textContent = "";
+  }
+};
+
 function showError() {
+  confirmPasswordError();
   passwordError();
   zipError();
   countryError();
