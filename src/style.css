@@ -1,0 +1,36 @@
+:root {
+  --background: #16161a;
+  --primary: #7f5af0;
+  --secondary: #2cb67d;
+  --white: #fffffe;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5rem;
+  padding: 1.5rem;
+  color: var(--white);
+  background-color: var(--background);
+  font-family: "Silkscreen", sans-serif;
+}
+
+.hero-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero {
+  display: flex;
+  align-items: center;
+  color: var(--secondary);
+  margin: 0;
+}
+
+.hero-logo {
+  width: 4rem;
+  height: auto;
+}
