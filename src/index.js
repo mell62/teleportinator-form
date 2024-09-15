@@ -16,12 +16,14 @@ const zipField = document.querySelector("#zip");
 const passwordField = document.querySelector("#password");
 const confirmPasswordField = document.querySelector("#confirm-password");
 
-form.addEventListener("submit", (event) => {
-  event.preventDefault();
-});
-
 emailField.addEventListener("input", emailError);
 countryField.addEventListener("input", countryError);
 zipField.addEventListener("input", zipError);
 passwordField.addEventListener("input", passwordError);
 confirmPasswordField.addEventListener("input", confirmPasswordError);
+
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+});
+
+form.addEventListener("submit", showError);

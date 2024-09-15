@@ -90,9 +90,24 @@ const confirmPasswordError = function showConfirmPasswordError() {
 };
 
 function showError() {
-  emailError();
-  countryError();
-  zipError();
-  passwordError();
-  confirmPasswordError();
+  if (!emailField.validity.valid) {
+    emailError();
+    return;
+  }
+  if (!countryField.validity.valid) {
+    countryError();
+    return;
+  }
+  if (!zipField.validity.valid) {
+    zipError();
+    return;
+  }
+  if (!passwordField.validity.valid) {
+    passwordError();
+    return;
+  }
+  if (!confirmPasswordField.validity.valid) {
+    confirmPasswordError();
+    return;
+  }
 }
