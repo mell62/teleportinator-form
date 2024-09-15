@@ -1,8 +1,9 @@
-export { emailError, countryError, showError };
+export { emailError, countryError, showError, zipError };
 
 const errorMsgElement = document.querySelector(".error-msg");
 const emailField = document.querySelector("#email");
 const countryField = document.querySelector("#country");
+const zipField = document.querySelector("#zip");
 
 const emailError = function showEmailError() {
   if (emailField.validity.typeMismatch) {
@@ -19,7 +20,7 @@ const emailError = function showEmailError() {
 const countryError = function showCountryError() {
   if (countryField.validity.patternMismatch) {
     errorMsgElement.textContent =
-      "Please enter a valid country name. We promise in the next update, we will bring the feature to teleport you to stars and planets.";
+      "Please enter a valid country name. We promise in the next update, you will be able to teleport to stars and planets.";
   } else if (countryField.validity.valueMissing) {
     errorMsgElement.textContent =
       "Please enter a country name, so we can proudly deliver our services at your...countrystep!";
@@ -28,7 +29,17 @@ const countryError = function showCountryError() {
   }
 };
 
+const zipError = function showZipError() {
+  if (zipField.validity.valueMissing) {
+    errorMsgElement.textContent =
+      "Please enter a zip code to pinpoint your landing spot. Precision!";
+  } else {
+    errorMsgElement.textContent = "";
+  }
+};
+
 function showError() {
+  zipError();
   countryError();
   emailError();
 }
