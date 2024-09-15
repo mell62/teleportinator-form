@@ -1,9 +1,10 @@
-export { emailError, countryError, showError, zipError };
+export { emailError, countryError, zipError, passwordError, showError };
 
 const errorMsgElement = document.querySelector(".error-msg");
 const emailField = document.querySelector("#email");
 const countryField = document.querySelector("#country");
 const zipField = document.querySelector("#zip");
+const passwordField = document.querySelector("#password");
 
 const emailError = function showEmailError() {
   if (emailField.validity.typeMismatch) {
@@ -38,7 +39,26 @@ const zipError = function showZipError() {
   }
 };
 
+const currentPasswordLength = function getPasswordLength() {
+  const passwordLength = passwordField.value.length;
+  return passwordLength;
+};
+
+const passwordError = function showPasswordError() {
+  if (passwordField.validity.tooShort) {
+    errorMsgElement.textContent = `You need to enter ${
+      10 - currentPasswordLength()
+    } more characters for takeoff! Please include at least one lowercase, uppercase, number and special character.`;
+  } else if (passwordField.validity.patternMismatch) {
+    errorMsgElement.textContent =
+      "Please include at least one lowercase, uppercase, and number (no special characters). Nobody wants their teleportation to get hacked, ideally.";
+  } else {
+    errorMsgElement.textContent = "";
+  }
+};
+
 function showError() {
+  passwordError();
   zipError();
   countryError();
   emailError();
