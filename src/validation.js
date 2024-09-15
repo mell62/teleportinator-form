@@ -15,36 +15,42 @@ const passwordField = document.querySelector("#password");
 const confirmPasswordField = document.querySelector("#confirm-password");
 
 const emailError = function showEmailError() {
+  if (emailField.validity.valueMissing) {
+    errorMsgElement.textContent =
+      "Please enter a valid email ID so we can contact you in cases where you teleport somewhere...unexpected.";
+    return;
+  }
   if (emailField.validity.typeMismatch) {
     errorMsgElement.textContent =
       "Please enter a valid email ID so we can contact you in cases where you teleport somewhere...unexpected.";
-  } else if (emailField.validity.valueMissing) {
-    errorMsgElement.textContent =
-      "Please enter a valid email ID so we can contact you in cases where you teleport somewhere...unexpected.";
-  } else {
-    errorMsgElement.textContent = "";
+    return;
   }
+
+  errorMsgElement.textContent = "";
 };
 
 const countryError = function showCountryError() {
+  if (countryField.validity.valueMissing) {
+    errorMsgElement.textContent =
+      "Please enter a country name, so we can proudly deliver our services at your...countrystep!";
+    return;
+  }
   if (countryField.validity.patternMismatch) {
     errorMsgElement.textContent =
       "Please enter a valid country name. We promise in the next update, you will be able to teleport to stars and planets.";
-  } else if (countryField.validity.valueMissing) {
-    errorMsgElement.textContent =
-      "Please enter a country name, so we can proudly deliver our services at your...countrystep!";
-  } else {
-    errorMsgElement.textContent = "";
+    return;
   }
+
+  errorMsgElement.textContent = "";
 };
 
 const zipError = function showZipError() {
   if (zipField.validity.valueMissing) {
     errorMsgElement.textContent =
       "Please enter a zip code to pinpoint your landing spot. Precision!";
-  } else {
-    errorMsgElement.textContent = "";
+    return;
   }
+  errorMsgElement.textContent = "";
 };
 
 const currentPasswordLength = function getPasswordLength() {
@@ -57,12 +63,14 @@ const passwordError = function showPasswordError() {
     errorMsgElement.textContent = `You need to enter ${
       10 - currentPasswordLength()
     } more characters for takeoff! Please include at least one lowercase, uppercase, number and special character.`;
-  } else if (passwordField.validity.patternMismatch) {
+    return;
+  }
+  if (passwordField.validity.patternMismatch) {
     errorMsgElement.textContent =
       "Please include at least one lowercase, uppercase, and number (no special characters). Nobody wants their teleportation to get hacked, ideally.";
-  } else {
-    errorMsgElement.textContent = "";
+    return;
   }
+  errorMsgElement.textContent = "";
 };
 
 const confirmPasswordValidation = function getConfirmPasswordValidation() {
@@ -76,15 +84,15 @@ const confirmPasswordError = function showConfirmPasswordError() {
   if (!confirmPasswordValidation()) {
     errorMsgElement.textContent =
       "Please enter the same stuff you entered as your password. Exactly the same - no rounding, no synonyms.";
-  } else {
-    errorMsgElement.textContent = "";
+    return;
   }
+  errorMsgElement.textContent = "";
 };
 
 function showError() {
-  confirmPasswordError();
-  passwordError();
-  zipError();
-  countryError();
   emailError();
+  countryError();
+  zipError();
+  passwordError();
+  confirmPasswordError();
 }
